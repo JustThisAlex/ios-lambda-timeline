@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G52-zT-LpC">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Record-->
+        <scene sceneID="3rg-YA-Xdo">
+            <objects>
+                <viewController id="Zqp-Fd-4bb" customClass="RecordingViewController" customModule="Video" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rux-Bz-ywK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Wf-uE-fXE" customClass="CameraPreviewView" customModule="Video" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKv-dH-7JE">
+                                <rect key="frame" x="319" y="718" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="0hG-H2-QY2"/>
+                                    <constraint firstAttribute="height" constant="75" id="lvh-mB-sCC"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="45" scale="large"/>
+                                </state>
+                                <state key="selected" image="stop.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="recordButtonPressed:" destination="Zqp-Fd-4bb" eventType="touchUpInside" id="xfL-yl-b2x"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8Wf-uE-fXE" firstAttribute="leading" secondItem="lNi-G0-SiP" secondAttribute="leading" id="2jl-Pj-XlC"/>
+                            <constraint firstItem="8Wf-uE-fXE" firstAttribute="trailing" secondItem="lNi-G0-SiP" secondAttribute="trailing" id="JWA-VD-ysq"/>
+                            <constraint firstItem="lNi-G0-SiP" firstAttribute="bottom" secondItem="EKv-dH-7JE" secondAttribute="bottom" constant="20" id="S14-QP-IKd"/>
+                            <constraint firstItem="8Wf-uE-fXE" firstAttribute="bottom" secondItem="Rux-Bz-ywK" secondAttribute="bottom" id="h5L-3E-sWF"/>
+                            <constraint firstItem="lNi-G0-SiP" firstAttribute="trailing" secondItem="EKv-dH-7JE" secondAttribute="trailing" constant="20" id="iPI-og-Fyc"/>
+                            <constraint firstItem="8Wf-uE-fXE" firstAttribute="top" secondItem="Rux-Bz-ywK" secondAttribute="top" id="pWY-aP-oSp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lNi-G0-SiP"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Record" image="largecircle.fill.circle" catalog="system" selectedImage="largecircle.fill.circle" id="q29-Sl-ILb">
+                        <color key="badgeColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="cameraView" destination="8Wf-uE-fXE" id="0k8-iT-cx4"/>
+                        <outlet property="recordButton" destination="EKv-dH-7JE" id="UGL-g7-1Nd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qdV-2a-EhG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1246.376811594203" y="461.38392857142856"/>
+        </scene>
+        <!--Browse-->
+        <scene sceneID="ujG-su-Lkp">
+            <objects>
+                <tableViewController id="Adp-vf-qLh" customClass="BrowseTableViewController" customModule="Video" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VTl-7o-Y4d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="250" id="AXp-eA-322" customClass="BrowseCell" customModule="Video" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="250"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AXp-eA-322" id="nyZ-xN-XbY">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Adp-vf-qLh" id="rZn-AH-0sw"/>
+                            <outlet property="delegate" destination="Adp-vf-qLh" id="X6w-mP-qoW"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Browse" image="play.circle.fill" catalog="system" selectedImage="play.circle.fill" id="gjr-7L-6n4">
+                        <color key="badgeColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ag-Jg-xhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1244.9275362318842" y="-211.60714285714286"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="du4-kj-QSo">
+            <objects>
+                <tabBarController id="G52-zT-LpC" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rF1-VJ-hJA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Adp-vf-qLh" kind="relationship" relationship="viewControllers" id="mR7-b8-rJ6"/>
+                        <segue destination="Zqp-Fd-4bb" kind="relationship" relationship="viewControllers" id="QUE-dQ-AAu"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xLH-gV-ETL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="329" y="138"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="circle.fill" catalog="system" width="64" height="60"/>
+        <image name="largecircle.fill.circle" catalog="system" width="64" height="60"/>
+        <image name="play.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="stop.fill" catalog="system" width="64" height="56"/>
+    </resources>
+</document>

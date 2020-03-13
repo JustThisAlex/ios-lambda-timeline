@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     
     private var scaledImage: UIImage? { didSet { updateImage() }}
     private let context = CIContext(options: nil)
+    private let locationManager = CLLocationManager()
+    var coordinates: CLLocationCoordinate2D? { didSet { finishSaving() }}
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var exposure: UISlider!
@@ -91,21 +93,23 @@ class ViewController: UIViewController {
         present(imagePicker, animated: true)
     }
     @IBAction func save(_ sender: Any) {
-        guard let originalImage = originalImage else { return }
-        guard let processedImage = self.filter(image: originalImage.flattened) else { return }
-        PHPhotoLibrary.requestAuthorization { (status) in
-            guard status == .authorized else { return }
-            PHPhotoLibrary.shared().performChanges({
-                PHAssetCreationRequest.creationRequestForAsset(from: processedImage)
-            }, completionHandler: { (success, error) in
-                if let error = error {
-                    NSLog("Error saving photo: \(error)")
-                    return
-                }
-            })
-        }
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        guard CLLocationManager.locationServicesEnabled() else { return }
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
     }
     
+    private func finishSaving() {
+        guard let originalImage = originalImage else { return }
+        guard let processedImage = self.filter(image: originalImage.flattened) else { return }
+        guard let coordinates = coordinates else { return }
+        var images = Helper.getImages()
+        images.append(Image(title: "", image: processedImage.pngData(), latitude: coordinates.latitude, longitude: coordinates.longitude))
+        Helper.setImages(images)
+        NotificationCenter.default.post(name: NSNotification.Name("NewImage"), object: nil)
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -120,5 +124,20 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("Cancelled picker")
+    }
+}
+
+//MARK: - LocationDelegate
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = manager.location?.coordinate else { return }
+        self.coordinates = location
     }
 }

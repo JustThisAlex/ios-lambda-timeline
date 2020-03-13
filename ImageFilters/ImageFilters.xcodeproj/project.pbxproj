@@ -14,6 +14,9 @@
 		FA60CCC32417A10700547FB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA60CCC22417A10700547FB6 /* Assets.xcassets */; };
 		FA60CCC62417A10700547FB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA60CCC42417A10700547FB6 /* LaunchScreen.storyboard */; };
 		FA60CCCE2417AD4E00547FB6 /* Scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60CCCD2417AD4E00547FB6 /* Scaling.swift */; };
+		FA975A90241C2B7E0063B027 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA975A8F241C2B7E0063B027 /* MapViewController.swift */; };
+		FA975A92241C2E840063B027 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA975A91241C2E840063B027 /* Helper.swift */; };
+		FA975A94241C2EDC0063B027 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA975A93241C2EDC0063B027 /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		FA60CCC52417A10700547FB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA60CCC72417A10700547FB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA60CCCD2417AD4E00547FB6 /* Scaling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scaling.swift; sourceTree = "<group>"; };
+		FA975A8F241C2B7E0063B027 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		FA975A91241C2E840063B027 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		FA975A93241C2EDC0063B027 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				FA60CCC22417A10700547FB6 /* Assets.xcassets */,
 				FA60CCC42417A10700547FB6 /* LaunchScreen.storyboard */,
 				FA60CCC72417A10700547FB6 /* Info.plist */,
+				FA975A8F241C2B7E0063B027 /* MapViewController.swift */,
+				FA975A91241C2E840063B027 /* Helper.swift */,
+				FA975A93241C2EDC0063B027 /* Image.swift */,
 			);
 			path = ImageFilters;
 			sourceTree = "<group>";
@@ -141,10 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA975A94241C2EDC0063B027 /* Image.swift in Sources */,
 				FA60CCBE2417A10400547FB6 /* ViewController.swift in Sources */,
 				FA60CCCE2417AD4E00547FB6 /* Scaling.swift in Sources */,
 				FA60CCBA2417A10400547FB6 /* AppDelegate.swift in Sources */,
+				FA975A90241C2B7E0063B027 /* MapViewController.swift in Sources */,
 				FA60CCBC2417A10400547FB6 /* SceneDelegate.swift in Sources */,
+				FA975A92241C2E840063B027 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
